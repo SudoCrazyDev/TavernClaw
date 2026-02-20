@@ -1,0 +1,5 @@
+# TavernClaw — Cursor rules
+
+- **UI**: Use shadcn/ui for all UI in the app. Do not hand-roll buttons, cards, forms, dialogs, or tables when a shadcn component exists.
+- **Reusable components**: Keep one UI system across the app. Shared UI lives in `app/src/components/` — `ui/` for shadcn primitives, and app-specific composites that use only those. Pages compose from components; no duplicate UI patterns.
+- See `.cursor/rules/shadcn-ui.mdc` for full details.

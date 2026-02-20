@@ -1,0 +1,27 @@
+---
+description: Use shadcn/ui for a consistent, reusable UI across the app
+globs: app/**/*.jsx, app/**/*.tsx
+alwaysApply: true
+---
+
+# shadcn/ui — One UI Across the App
+
+## Use shadcn/ui for All UI
+
+- **Always use shadcn/ui components** for buttons, cards, forms, dialogs, tables, inputs, and layout in the app.
+- Do not hand-roll custom equivalents (e.g. raw `<button>` or custom card markup) when a shadcn component exists.
+- Add new shadcn components via the shadcn CLI when needed; keep them in `app/src/components/ui/`.
+
+## Reusable Components Only
+
+- **Single source of truth**: All shared UI lives under `app/src/components/`.
+  - `app/src/components/ui/` — shadcn primitives (Button, Card, Dialog, Table, etc.).
+  - `app/src/components/` — app-specific composites (e.g. InstanceCard, CreateInstanceDialog) that use only `ui/` components.
+- **No duplicate UI patterns**: If a pattern repeats (e.g. a card with title + description + action), extract it into a reusable component in `app/src/components/` and use it everywhere.
+- **Pages use components**: Pages in `app/src/pages/` should compose components from `app/src/components/` and `app/src/components/ui/`, not inline one-off markup.
+
+## Conventions
+
+- Import from `@/components/ui/` (or the project alias) for shadcn components.
+- Keep shadcn component files as installed; override appearance via props or Tailwind in the parent, not by editing `ui/` files unless intentional theming.
+- Prefer composition: build app components from small shadcn building blocks so the UI stays consistent across Home, Dashboard, Instances, and future routes.
